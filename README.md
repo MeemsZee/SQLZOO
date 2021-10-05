@@ -64,7 +64,44 @@ FROM world
 WHERE population >200000000;
 ```
 
+#### Question 4- South America In millions
 
+Show the name and population in millions for the countries of the continent 'South America'.  
+
+```sql
+SELECT name, population/1000000 as pop_per_million
+FROM world
+WHERE continent = 'South America';
+```
+
+#### Question 5- France, Germany, Italy
+
+Show the name and population for France, Germany, Italy
+
+```sql
+SELECT name, population 
+FROM world
+WHERE name IN ('France', 'Germany', 'Italy');
+```
+#### Question 6- United
+
+Show the countries which have name that includes the word 'United'
+
+```sql
+SELECT name
+FROM world
+WHERE name LIKE '%United%';
+```
+
+#### Question 7- Two ways to be big
+
+Show the countries that are big by area or big by population.  Show name, population and area
+
+```sql
+SELECT name, population, area
+FROM world
+WHERE area> 3000000 OR population>250000000;
+```
 
 
 
