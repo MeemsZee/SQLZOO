@@ -352,6 +352,115 @@ subject, winner;
 ```
 
 
+### SELECT within SELECT
+
+#### Question 1- Bigger than Russia
+
+List each country name where the population is larger than that of 'Russia'. 
+
+```sql
+SELECT name
+FROM world
+WHERE population> 
+(SELECT population 
+From world
+WHERE name='Russia');
+```
+
+#### Question 2- Richer than UK
+
+Show the countries in Europe with a per capita GDP greater than 'United Kingdom'
+
+```sql
+SELECT name
+FROM world
+WHERE continent='europe'
+AND GDP/population>
+(SELECT gdp/population
+FROM world
+WHERE name= 'united kingdom');
+```
+
+#### Question 3- Neighbours of Argentina and Australia
+List the name and continent of countries in the continent containing either Argentina or Australia.  Order by name of the country
+
+```sql
+SELECT name, continent
+FROM world
+WHERE continent= 
+(SELECT continent 
+FROM world
+WHERE name='Australia')
+OR continent= 
+(SELECT continent
+FROM world
+WHERE name= 'Argentina')
+ORDER BY name ASC;
+```
+
+#### Question 4- Between Cananda and Poland
+
+Which country has a population that is more than Cananda but less than Poland? Show name and population
+
+```sql
+SELECT name, population 
+FROM world
+WHERE population> 
+(SELECT population 
+FROM world
+WHERE name='Canada')
+AND population<
+(SELECT population 
+FROM world
+WHERE name ='poland');
+```
+
+#### Question 5- Percentages of Germany
+
+Show the name and population of each country in Europe.  Show the population as a percentage of the population of Germany. 
+
+```sql
+SELECT name, CONCAT(ROUND(population/(SELECT population From world WHERE name='Germany')*100,0),'%')
+FROM world
+WHERE continent='europe';
+```
+#### Question 6- Bigger than every country in Europe
+
+Which countries have a GDP greater than every country in Europe? Give the name only.  Hint: For the first query, the condition gdp>0 is imperative in the subquery.  Some countries have null for gdp.
+
+```sql
+SELECT name 
+FROM world
+WHERE gdp>
+ALL(SELECT gdp 
+FROM world
+WHERE continent='europe'
+and gdp>0); 
+```
+OR
+
+```sql
+SELECT name 
+FROM world
+WHERE gdp>
+(SELECT MAX(gdp) 
+FROM world
+WHERE continent='europe');
+```
+
+#### Question 7- Largest in each continent
+
+Find the largest country(by area) in each continent, show the continent, the name and the area. 
+
+```sql
+
+SELECT continent, name, area FROM world a
+WHERE area >= ALL
+(SELECT area FROM world b
+WHERE a.continent=b.continent
+AND area>0);
+```
+
 
 
 
