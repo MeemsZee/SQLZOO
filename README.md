@@ -461,7 +461,126 @@ WHERE a.continent=b.continent
 AND area>0);
 ```
 
+OR 
 
+```sql
+SELECT continent, name, area FROM world a
+WHERE area =
+(SELECT Max(area) FROM world b
+WHERE a.continent=b.continent
+AND area>0)
+```
+
+#### Question 8- First country of each continent
+
+```sql
+SELECT continent, name 
+FROM world a
+WHERE name=
+(SELECT MIN(name) FROM world b WHERE a.continent=b.continent)
+```
+
+OR 
+```sql
+SELECT continent, name 
+FROM world a
+WHERE name<= ALL
+(SELECT name FROM world b WHERE a.continent=b.continent)
+```
+
+#### Question 9- Difficult Questions that Utilize Techniques Not Covered In Prior Sections
+
+Find the continents where all countires have a population <25000000.  Then find the names of the countries associated with these continents.  Show name, continent and population. 
+
+```sql
+SELECT name, continent, population 
+FROM world a
+WHERE 25000000>= 
+ALL(SELECT population
+FROM world b
+WHERE a.continent=b.continent);
+```
+
+#### Question 10
+
+Some countries have populations more than three times that of any of their neighbours (in the same continent).  Give the countries and continents
+
+```sql
+SELECT name, continent FROM world a 
+WHERE population>= ALL(SELECT population*3 FROM world b
+WHERE a.continent= b.continent AND b.name != a.name);
+```
+
+### SUM and COUNT
+
+#### Question 1- Total world population
+
+Show the total population of the world. 
+
+```sql
+SELECT SUM(population)
+FROM world;
+```
+
+#### Question 2- List of continents
+
+List all continents- just once each
+
+```sql
+SELECT Distinct(continent)
+FROM world;
+```
+
+#### Question 3.  GDP of Africa
+
+Give the total GDP of Africa
+
+```sql
+SELECT sum(gdp) 
+FROM world
+WHERE continent='africa';
+```
+
+#### Question 4. Count the big countries
+
+How many countries have an area of at least 1000000
+
+```sql
+SELECT count(name) 
+FROM world
+WHERE area>=1000000;
+```
+
+#### Question 5- Baltic states population
+
+What is the total population of ('Estonia', 'Latvia', 'Lithuania')
+
+```sql
+SELECT SUM(population)
+FROM world
+WHERE name IN ('estonia', 'latvia', 'lithuania');
+```
+
+#### Question 6- Counting the countries of each continent
+
+For each continent show the continent and number of countries
+
+```sql
+SELECT continent, count(name)
+FROM world
+GROUP BY continent;
+```
+
+#### Question 7- Counting big countries in each continent
+
+For each continent show the continent and number of countries with populations of at least 10 million. 
+
+```sql
+SELECT continent, COUNT(name)
+FROM world
+WHERE population>=10000000
+GROUP BY continent;
+```
 
 
 
