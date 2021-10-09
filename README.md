@@ -582,6 +582,194 @@ WHERE population>=10000000
 GROUP BY continent;
 ```
 
+#### Question 8- Counting big continents
+
+List the continents that have a total population of at least 100 million
+
+```sql
+SELECT continent
+FROM world 
+GROUP BY continent
+HAVING SUM(population)>=100000000;
+```
+
+### Nobel Table- SUM and COUNT functions
+
+#### Question 1
+
+Show the number of prizes awarded
+
+```sql
+SELECT COUNT(winner) 
+FROM nobel;
+```
+
+#### Question 2
+
+List each subject- just once
+
+```sql
+SELECT DISTINCT(subject)
+FROM nobel;
+```
+
+### Question 3
+
+Show the total number of prizes awarded for Physics
+
+```sql
+SELECT COUNT(winner) 
+FROM nobel
+WHERE subject='physics';
+```
+
+#### Using GROUP BY and HAVING
+
+#### Question 4
+
+For each subject, show the subject and number of prizes
+
+```sql
+SELECT subject, COUNT(winner)
+FROM nobel
+GROUP BY subject;
+```
+
+#### Question 5
+
+For each subject, show the first year that the prize was awarded
+
+```sql
+SELECT subject, MIN(yr)
+FROM nobel 
+GROUP BY subject;
+```
+
+#### Question 6
+
+For each subject, who the number of prizes awarded in the year 2000
+
+```sql
+SELECT subject, COUNT(winner)
+FROM nobel 
+WHERE yr='2000'
+GROUP BY subject;
+```
+
+#### Aggregates with DISCTINCT
+
+#### Question 7
+
+Show the number of winners for each subject
+
+```sql
+SELECT subject, COUNT(DISTINCT(winner))
+FROM nobel
+GROUP BY subject;
+```
+
+#### Question 8
+
+For each subject, show how many years have had prizes awarded
+
+```sql
+SELECT subject, COUNT(DISTINCT(yr))
+FROM nobel
+GROUP BY subject;
+```
+
+#### Using HAVING
+
+#### Question 9
+
+Show the years in which three prizes where given for Physics
+
+```sql
+SELECT yr
+FROM nobel
+WHERE subject='physics'
+GROUP BY yr
+HAVING count(winner)=3;
+```
+
+#### Question 10
+
+Show winners who have won more than once
+
+```sql
+SELECT winner
+FROM nobel
+GROUP BY winner
+HAVING COUNT(winner)>1;
+```
+
+#### Question 11
+
+Show winners who have one more than one subject
+
+```sql
+SELECT winner 
+FROM nobel
+GROUP BY winner
+HAVING COUNT(DISTINCT(subject))>1;
+```
+
+#### GROUP By yr, subject
+
+#### QUESTION 12
+
+Show the year and subject where 3 prizes were given.  SHow only years 2000 onwards
+
+```sql
+SELECT yr, subject
+FROM nobel
+WHERE yr >=2000
+GROUP BY yr, subject
+HAVING COUNT(winner)=3;
+```
+
+### The JOIN Operation
+
+#### Question 1
+
+Show matchid and player name for all goals scored by Germany.  To identify German players, check for teamid='GER'
+
+```sql
+SELECT matchid, player FROM goal 
+  WHERE teamid='GER';
+```
+
+#### Question 2
+
+From the previous query you can see that Lars Bender's scored a goal in game 1012. Now we want to know what teams were playing in that match.
+
+Notice in the that the column matchid in the goal table corresponds to the id column in the game table. We can look up information about game 1012 by finding that row in the game table.
+
+Show id, stadium, team1, team2 for just game 1012
+
+```sql
+SELECT id,stadium,team1,team2
+FROM game
+WHERE id=1012;
+```
+
+OR
+
+```sql
+SELECT id,stadium,team1,team2
+FROM game JOIN goal
+ON game.id=goal.matchid
+WHERE player='Lars Bender';
+```
+
+OR
+
+```sql
+SELECT id,stadium,team1,team2
+FROM game, goal
+WHERE game.id=goal.matchid AND player='Lars Bender';
+```
+
 
 
 
