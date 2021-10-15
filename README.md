@@ -16,13 +16,9 @@
 Show population of Germany.  Note: Don't use double quotation marks
   
 ```sql
-SELECT 
-  population 
-FROM 
-  world
-WHERE 
-  name='Germany'
-; 
+SELECT population
+FROM   world
+WHERE  name = 'Germany';
 ```
 
 #### Question 2- Scandinavia
@@ -30,14 +26,10 @@ WHERE
 Show the name and population of 'Sweden', 'Norway' and 'Denmark'
 
 ```sql
-SELECT 
-  name, population 
-FROM 
-  world 
-WHERE 
-   name 
-     IN ('Sweden', 'Norway', 'Denmark')
-;
+SELECT name, 
+       population
+FROM   world
+WHERE  name IN('Sweden', 'Norway', 'Denmark');
 ```
 
 #### Question 3- Just the right size
@@ -45,13 +37,10 @@ WHERE
 Show the country and area for countries with an aera between 200,000 and 250,000 
 
 ```sql
-SELECT 
-  name, 
-  area
-FROM 
-  world
-WHERE 
-  area BETWEEN 200000 and 250000
+SELECT name, 
+       area
+FROM   world
+WHERE  area BETWEEN 200000 AND 250000;
 ;
 ```
 
@@ -62,13 +51,10 @@ WHERE
 Show name, continent and population of all countries
 
 ```sql
-SELECT 
-  name, 
-  continent, 
-  population 
-FROM 
-  world
-;
+SELECT name, 
+       continent, 
+       population
+FROM   world;
 ```
 
 #### Question 2- Large Countries
