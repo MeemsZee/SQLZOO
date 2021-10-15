@@ -21,7 +21,8 @@ SELECT
 FROM 
   world
 WHERE 
-  name='Germany'; 
+  name='Germany'
+; 
 ```
 
 #### Question 2- Scandinavia
@@ -35,7 +36,8 @@ FROM
   world 
 WHERE 
    name 
-     IN ('Sweden', 'Norway', 'Denmark');
+     IN ('Sweden', 'Norway', 'Denmark')
+;
 ```
 
 #### Question 3- Just the right size
@@ -49,7 +51,8 @@ SELECT
 FROM 
   world
 WHERE 
-  area BETWEEN 200000 and 250000;
+  area BETWEEN 200000 and 250000
+;
 ```
 
 ### SELECT from WORLD
@@ -64,7 +67,8 @@ SELECT
   continent, 
   population 
 FROM 
-  world;
+  world
+;
 ```
 
 #### Question 2- Large Countries
@@ -77,7 +81,8 @@ SELECT
 FROM 
   world
 WHERE 
-  population >200000000;
+  population >200000000
+;
 ```
 
 #### Question 3- Per capital GDP
@@ -91,7 +96,8 @@ SELECT
 FROM 
   world
 WHERE 
-  population >200000000;
+  population >200000000
+;
 ```
 
 #### Question 4- South America In millions
@@ -105,7 +111,8 @@ SELECT
 FROM 
   world
 WHERE 
-  continent = 'South America';
+  continent = 'South America'
+;
 ```
 
 #### Question 5- France, Germany, Italy
@@ -120,7 +127,8 @@ FROM
   world
 WHERE 
   name 
-    IN ('France', 'Germany', 'Italy');
+    IN ('France', 'Germany', 'Italy')
+;
 ```
 #### Question 6- United
 
@@ -133,7 +141,8 @@ FROM
   world
 WHERE 
   name 
-    LIKE '%United%';
+    LIKE '%United%'
+;
 ```
 
 #### Question 7- Two ways to be big
@@ -149,7 +158,8 @@ FROM
   world
 WHERE 
   area> 3000000 
-  OR population>250000000;
+  OR population>250000000
+;
 ```
 
 #### Question 8- One or the other (but not both)
@@ -165,7 +175,8 @@ FROM
   world 
 WHERE 
   area > 3000000 
-  XOR population > 250000000;
+  XOR population > 250000000
+;
 ```
 
 OR
@@ -179,7 +190,8 @@ FROM
   world 
 WHERE 
   (area > 3000000 AND population <250000000) 
-  OR (population > 250000000 AND area <3000000);
+  OR (population > 250000000 AND area <3000000)
+;
 ```
 
 #### Question 9- Rounding
@@ -193,7 +205,8 @@ SELECT
 FROM 
   world 
 WHERE 
-  continent = 'South America'; 
+  continent = 'South America'
+; 
 ```
 
 #### Question 10- Trillion dollar economies 
@@ -207,7 +220,8 @@ SELECT
 FROM 
   world
 WHERE 
-  gdp > 1000000000000;
+  gdp > 1000000000000
+;
 ```
 
 #### Question 11- Name and capital have the same length
@@ -221,7 +235,8 @@ SELECT
 FROM 
   world 
 WHERE 
-  LENGTH(name)= LENGTH(capital);
+  LENGTH(name)= LENGTH(capital)
+;
 ```
 
 #### Question 12- Matching name and capital
@@ -236,7 +251,8 @@ FROM
   world 
 WHERE 
   LEFT(name,1)= LEFT(capital,1) 
-  AND name <> capital;
+  AND name <> capital
+;
 ```
 
 #### Question 13- All the vowels
@@ -254,7 +270,8 @@ WHERE
   AND name LIKE '%i%'
   AND name LIKE '%o%' 
   AND name LIKE '%u%' 
-  AND name NOT LIKE '% %';
+  AND name NOT LIKE '% %'
+;
 ```
 
 ### SELECT from Nobel 
@@ -271,7 +288,8 @@ SELECT
 FROM 
   nobel
 WHERE 
-  yr = 1950;
+  yr = 1950
+;
 ```
 
 #### Question 2- 1962 Literature
@@ -285,7 +303,8 @@ FROM
   nobel 
 WHERE 
   yr = 1962
-  AND subject = 'literature';
+  AND subject = 'literature'
+;
 ```
 
 #### Question 3- Albert Einstein
@@ -299,7 +318,8 @@ SELECT
 FROM 
   nobel 
 WHERE 
-  winner= 'albert einstein';
+  winner= 'albert einstein'
+;
 ```
 
 #### Question 4- Recent Peace Prizes
@@ -313,7 +333,8 @@ FROM
   nobel
 WHERE 
   yr >= 2000 
-  AND subject ='peace';
+  AND subject ='peace'
+;
 ```
 
 #### Question 5- Literature in the 1980s
@@ -328,7 +349,8 @@ FROM
 WHERE 
   subject= 'literature'
   AND yr>=1980 
-  AND yr <=1989;
+  AND yr <=1989
+;
 ```
 OR
 
@@ -342,7 +364,8 @@ FROM
 WHERE 
   subject= 'literature'
   AND yr>=1980 
-  AND yr <=1989;
+  AND yr <=1989
+;
 ```
 
 #### Question 6- Only Presidents
@@ -356,7 +379,8 @@ FROM
   nobel 
 WHERE 
   winner 
-    IN ('theodore roosevelt', 'woodrow wilson', 'jimmy carter', 'barack obama'); 
+    IN ('theodore roosevelt', 'woodrow wilson', 'jimmy carter', 'barack obama')
+; 
 ```
 
 #### Question 7- John 
@@ -370,7 +394,8 @@ FROM
   nobel
 WHERE 
   winner 
-    LIKE 'John%';
+    LIKE 'John%'
+;
 ```
 
 #### Question 8- Chemistry and Physics from different years
@@ -388,7 +413,8 @@ WHERE
   subject='physics' 
   AND yr =1980
   OR (subject='chemistry' 
-    AND yr = 1984);
+    AND yr = 1984)
+;
 ```
 
 #### Question 9- Exclude Chemists and Medics
@@ -405,7 +431,8 @@ FROM
 WHERE 
   yr = 1980 
   AND subject 
-    NOT IN ('Chemistry', 'Medicine');
+    NOT IN ('Chemistry', 'Medicine')
+;
 ```
 
 #### Question 10- Early Medicine, Late Literature
@@ -421,7 +448,8 @@ FROM
   nobel
 WHERE 
   (subject ='medicine' and yr<1910)
-  OR (subject='literature' and yr >=2004);
+  OR (subject='literature' and yr >=2004)
+;
 ```
 #### Question 11- Umlaut
 
@@ -433,7 +461,8 @@ SELECT
 FROM 
   nobel 
 WHERE 
-  winner='peter grünberg';
+  winner='peter grünberg'
+;
 ```
 
 #### Question 12- Apostrophe
@@ -446,7 +475,8 @@ SELECT
 FROM 
   nobel
 WHERE 
-  winner= 'eugene o''neill';
+  winner= 'eugene o''neill'
+;
 ```
 
 #### Question 13- Knights of the realm
@@ -465,7 +495,8 @@ WHERE
     LIKE 'SIR%'
 ORDER BY 
   yr DESC, 
-  winner;
+  winner
+;
 ```
 
 #### Question 14- Chemistry and Physics last
@@ -482,7 +513,8 @@ WHERE
   yr=1984
 ORDER BY 
   subject 
-    IN ('physics','chemistry'), subject, winner;
+    IN ('physics','chemistry'), subject, winner
+;
 ```
  
  OR
@@ -501,7 +533,8 @@ ORDER BY
       THEN 1 ELSE 0 
       END,
   subject,
-  winner;
+  winner
+;
 ```
 
 
@@ -523,7 +556,8 @@ WHERE
      From 
        world
      WHERE 
-       name='Russia');
+       name='Russia')
+;
 ```
 
 #### Question 2- Richer than UK
@@ -543,7 +577,8 @@ WHERE
      FROM 
        world
      WHERE 
-       name= 'united kingdom');
+       name= 'united kingdom')
+;
 ```
 
 #### Question 3- Neighbours of Argentina and Australia
@@ -570,7 +605,9 @@ WHERE
        world
      WHERE 
        name= 'Argentina')
-ORDER BY name ASC;
+ORDER BY 
+  name ASC
+;
 ```
 
 #### Question 4- Between Cananda and Poland
@@ -597,7 +634,8 @@ WHERE
      FROM 
        world
      WHERE 
-       name ='poland');
+       name ='poland')
+;
 ```
 
 #### Question 5- Percentages of Germany
@@ -618,7 +656,8 @@ SELECT
 FROM 
   world
 WHERE 
-  continent='europe';
+  continent='europe'
+;
 ```
 #### Question 6- Bigger than every country in Europe
 
@@ -634,7 +673,8 @@ WHERE
     ALL(SELECT gdp 
     	FROM world
 	WHERE continent='europe'
-	AND gdp>0); 
+	AND gdp>0)
+; 
 ```
 OR
 
@@ -650,7 +690,8 @@ WHERE
       FROM 
         world
       WHERE 
-        continent='europe');
+        continent='europe')
+;
 ```
 
 #### Question 7- Largest in each continent
@@ -672,7 +713,8 @@ WHERE
 	   world b
 	 WHERE 
 	   a.continent=b.continent
-	   AND area>0);
+	   AND area>0)
+;
 ```
 
 OR 
@@ -693,6 +735,7 @@ WHERE
 	 WHERE 
 	   a.continent=b.continent
 	   AND area>0)
+;
 ```
 
 #### Question 8- First country of each continent
@@ -711,6 +754,7 @@ WHERE
         world b 
       WHERE 
         a.continent=b.continent)
+;
 ```
 
 OR 
@@ -728,6 +772,7 @@ WHERE
 	   world b 
 	 WHERE 
 	   a.continent=b.continent)
+;
 ```
 
 #### Question 9- Difficult Questions that Utilize Techniques Not Covered In Prior Sections
@@ -735,12 +780,20 @@ WHERE
 Find the continents where all countires have a population <25000000.  Then find the names of the countries associated with these continents.  Show name, continent and population. 
 
 ```sql
-SELECT name, continent, population 
-FROM world a
-WHERE 25000000>= 
-ALL(SELECT population
-FROM world b
-WHERE a.continent=b.continent);
+SELECT 
+  name, 
+  continent, 
+  population 
+FROM 
+  world a
+WHERE 
+  25000000>= ALL(SELECT 
+  		   population
+		 FROM 
+		   world b
+		 WHERE 
+		   a.continent=b.continent)
+;
 ```
 
 #### Question 10
@@ -748,9 +801,20 @@ WHERE a.continent=b.continent);
 Some countries have populations more than three times that of any of their neighbours (in the same continent).  Give the countries and continents
 
 ```sql
-SELECT name, continent FROM world a 
-WHERE population>= ALL(SELECT population*3 FROM world b
-WHERE a.continent= b.continent AND b.name != a.name);
+SELECT 
+  name, 
+  continent 
+FROM 
+  world a 
+WHERE 
+  population>= ALL(SELECT 
+  		     population*3 
+		   FROM 
+		     world b
+		   WHERE 
+		     a.continent= b.continent 
+		     AND b.name != a.name)
+;
 ```
 
 ### SUM and COUNT
@@ -760,8 +824,11 @@ WHERE a.continent= b.continent AND b.name != a.name);
 Show the total population of the world. 
 
 ```sql
-SELECT SUM(population)
-FROM world;
+SELECT 
+  SUM(population)
+FROM 
+  world
+;
 ```
 
 #### Question 2- List of continents
@@ -769,8 +836,11 @@ FROM world;
 List all continents- just once each
 
 ```sql
-SELECT Distinct(continent)
-FROM world;
+SELECT 
+  Distinct(continent)
+FROM 
+  world
+;
 ```
 
 #### Question 3.  GDP of Africa
@@ -778,9 +848,13 @@ FROM world;
 Give the total GDP of Africa
 
 ```sql
-SELECT sum(gdp) 
-FROM world
-WHERE continent='africa';
+SELECT 
+  sum(gdp) 
+FROM 
+  world
+WHERE 
+  continent='africa'
+;
 ```
 
 #### Question 4. Count the big countries
@@ -788,9 +862,13 @@ WHERE continent='africa';
 How many countries have an area of at least 1000000
 
 ```sql
-SELECT count(name) 
-FROM world
-WHERE area>=1000000;
+SELECT 
+  count(name) 
+FROM
+  world
+WHERE 
+  area>=1000000
+;
 ```
 
 #### Question 5- Baltic states population
@@ -798,9 +876,14 @@ WHERE area>=1000000;
 What is the total population of ('Estonia', 'Latvia', 'Lithuania')
 
 ```sql
-SELECT SUM(population)
-FROM world
-WHERE name IN ('estonia', 'latvia', 'lithuania');
+SELECT 
+  SUM(population)
+FROM 
+  world
+WHERE 
+  name 
+    IN ('estonia', 'latvia', 'lithuania')
+;
 ```
 
 #### Question 6- Counting the countries of each continent
@@ -810,7 +893,8 @@ For each continent show the continent and number of countries
 ```sql
 SELECT continent, count(name)
 FROM world
-GROUP BY continent;
+GROUP BY continent
+;
 ```
 
 #### Question 7- Counting big countries in each continent
@@ -818,10 +902,16 @@ GROUP BY continent;
 For each continent show the continent and number of countries with populations of at least 10 million. 
 
 ```sql
-SELECT continent, COUNT(name)
-FROM world
-WHERE population>=10000000
-GROUP BY continent;
+SELECT 
+  continent,
+  COUNT(name)
+FROM 
+  world
+WHERE 
+  population>=10000000
+GROUP BY 
+  continent
+;
 ```
 
 #### Question 8- Counting big continents
@@ -829,10 +919,15 @@ GROUP BY continent;
 List the continents that have a total population of at least 100 million
 
 ```sql
-SELECT continent
-FROM world 
-GROUP BY continent
-HAVING SUM(population)>=100000000;
+SELECT 
+  continent
+FROM w
+  orld 
+GROUP BY 
+  continent
+HAVING 
+  SUM(population)>=100000000
+;
 ```
 
 ### Nobel Table- SUM and COUNT functions
@@ -842,8 +937,11 @@ HAVING SUM(population)>=100000000;
 Show the number of prizes awarded
 
 ```sql
-SELECT COUNT(winner) 
-FROM nobel;
+SELECT
+  COUNT(winner) 
+FROM 
+  nobel
+;
 ```
 
 #### Question 2
@@ -851,8 +949,11 @@ FROM nobel;
 List each subject- just once
 
 ```sql
-SELECT DISTINCT(subject)
-FROM nobel;
+SELECT 
+  DISTINCT(subject)
+FROM 
+  nobel
+;
 ```
 
 ### Question 3
@@ -860,9 +961,13 @@ FROM nobel;
 Show the total number of prizes awarded for Physics
 
 ```sql
-SELECT COUNT(winner) 
-FROM nobel
-WHERE subject='physics';
+SELECT 
+  COUNT(winner) 
+FROM 
+  nobel
+WHERE 
+  subject='physics'
+;
 ```
 
 #### Using GROUP BY and HAVING
@@ -872,9 +977,14 @@ WHERE subject='physics';
 For each subject, show the subject and number of prizes
 
 ```sql
-SELECT subject, COUNT(winner)
-FROM nobel
-GROUP BY subject;
+SELECT 
+  subject, 
+  COUNT(winner)
+FROM 
+  nobel
+GROUP BY 
+  subject
+;
 ```
 
 #### Question 5
@@ -882,9 +992,14 @@ GROUP BY subject;
 For each subject, show the first year that the prize was awarded
 
 ```sql
-SELECT subject, MIN(yr)
-FROM nobel 
-GROUP BY subject;
+SELECT 
+  subject, 
+  MIN(yr)
+FROM 
+  nobel 
+GROUP BY 
+  subject
+;
 ```
 
 #### Question 6
@@ -892,10 +1007,16 @@ GROUP BY subject;
 For each subject, who the number of prizes awarded in the year 2000
 
 ```sql
-SELECT subject, COUNT(winner)
-FROM nobel 
-WHERE yr='2000'
-GROUP BY subject;
+SELECT 
+  subject, 
+  COUNT(winner)
+FROM 
+  nobel 
+WHERE 
+  yr='2000'
+GROUP BY 
+  subject
+;
 ```
 
 #### Aggregates with DISCTINCT
@@ -905,9 +1026,15 @@ GROUP BY subject;
 Show the number of winners for each subject
 
 ```sql
-SELECT subject, COUNT(DISTINCT(winner))
-FROM nobel
-GROUP BY subject;
+SELECT 
+  subject, 
+  COUNT(
+    DISTINCT(winner))
+FROM 
+  nobel
+GROUP BY 
+  subject
+;
 ```
 
 #### Question 8
@@ -915,9 +1042,15 @@ GROUP BY subject;
 For each subject, show how many years have had prizes awarded
 
 ```sql
-SELECT subject, COUNT(DISTINCT(yr))
-FROM nobel
-GROUP BY subject;
+SELECT 
+  subject, 
+  COUNT(
+    DISTINCT(yr))
+FROM 
+  nobel
+GROUP BY 
+  subject
+;
 ```
 
 #### Using HAVING
@@ -927,11 +1060,17 @@ GROUP BY subject;
 Show the years in which three prizes where given for Physics
 
 ```sql
-SELECT yr
-FROM nobel
-WHERE subject='physics'
-GROUP BY yr
-HAVING count(winner)=3;
+SELECT 
+  yr
+FROM 
+  nobel
+WHERE 
+  subject='physics'
+GROUP BY 
+  yr
+HAVING 
+  COUNT(winner)=3
+;
 ```
 
 #### Question 10
@@ -939,10 +1078,15 @@ HAVING count(winner)=3;
 Show winners who have won more than once
 
 ```sql
-SELECT winner
-FROM nobel
-GROUP BY winner
-HAVING COUNT(winner)>1;
+SELECT 
+  winner
+FROM 
+  nobel
+GROUP BY 
+  winner
+HAVING 
+  COUNT(winner)>1
+;
 ```
 
 #### Question 11
@@ -950,10 +1094,17 @@ HAVING COUNT(winner)>1;
 Show winners who have one more than one subject
 
 ```sql
-SELECT winner 
-FROM nobel
-GROUP BY winner
-HAVING COUNT(DISTINCT(subject))>1;
+SELECT 
+  winner 
+FROM 
+  nobel
+GROUP BY 
+  winner
+HAVING 
+  COUNT(
+    DISTINCT(subject))
+    >1
+;
 ```
 
 #### GROUP By yr, subject
@@ -963,11 +1114,19 @@ HAVING COUNT(DISTINCT(subject))>1;
 Show the year and subject where 3 prizes were given.  SHow only years 2000 onwards
 
 ```sql
-SELECT yr, subject
-FROM nobel
-WHERE yr >=2000
-GROUP BY yr, subject
-HAVING COUNT(winner)=3;
+SELECT 
+  yr, 
+  subject
+FROM 
+  nobel
+WHERE 
+  yr >=2000
+GROUP BY 
+  yr, 
+  subject
+HAVING
+  COUNT(winner)=3
+;
 ```
 
 ### The JOIN Operation
@@ -977,8 +1136,14 @@ HAVING COUNT(winner)=3;
 Show matchid and player name for all goals scored by Germany.  To identify German players, check for teamid='GER'
 
 ```sql
-SELECT matchid, player FROM goal 
-  WHERE teamid='GER';
+SELECT 
+  matchid, 
+  player 
+FROM 
+  goal 
+WHERE 
+  teamid='GER'
+;
 ```
 
 #### Question 2
@@ -990,26 +1155,50 @@ Notice in the that the column matchid in the goal table corresponds to the id co
 Show id, stadium, team1, team2 for just game 1012
 
 ```sql
-SELECT id,stadium,team1,team2
-FROM game
-WHERE id=1012;
+SELECT 
+  id,
+  stadium,
+  team1,
+  team2
+FROM 
+  game
+WHERE 
+  id=1012
+;
 ```
 
 OR
 
 ```sql
-SELECT id,stadium,team1,team2
-FROM game JOIN goal
-ON game.id=goal.matchid
-WHERE player='Lars Bender';
+SELECT 
+  id,
+  stadium,
+  team1,
+  team2
+FROM 
+  game 
+    JOIN goal
+	ON game.id=goal.matchid
+WHERE 
+  player='Lars Bender'
+;
 ```
 
 OR
 
 ```sql
-SELECT id,stadium,team1,team2
-FROM game, goal
-WHERE game.id=goal.matchid AND player='Lars Bender';
+SELECT 
+  id,
+  stadium,
+  team1,
+  team2
+FROM 
+  game, 
+  goal
+WHERE 
+  game.id=goal.matchid 
+  AND player='Lars Bender'
+;
 ```
 
 #### Question 3- 
@@ -1019,18 +1208,35 @@ The code below shows the player (from the goal) and stadium name (from the game 
 Modify it to show the player, teamid, stadium and mdate for every German goal.
 
 ```sql
-SELECT player, teamid, stadium, mdate
-  FROM game, goal
-WHERE game.id=goal.matchid AND teamid='GER';
+SELECT 
+  player, 
+  teamid, 
+  stadium, 
+  mdate
+FROM 
+  game, 
+  goal
+WHERE 
+  game.id=goal.matchid 
+  AND teamid='GER'
+;
 ```
 
 OR
 
 ```sql
-SELECT player, teamid, stadium, mdate
-FROM game JOIN goal
-ON game.id=goal.matchid
-WHERE teamid='GER';
+SELECT 
+  player,
+  teamid, 
+  stadium, 
+  mdate
+FROM 
+  game 
+    JOIN goal
+	ON game.id=goal.matchid
+WHERE 
+  teamid='GER'
+;
 ```
 
 #### Question 4- 
@@ -1038,18 +1244,34 @@ WHERE teamid='GER';
 Show the team1, team2 and player for every goal scored by a player called Mario player LIKE 'Mario%'
 
 ```sql
-SELECT team1, team2, player 
-FROM game, goal
-WHERE game.id=goal.matchid AND player LIKE 'Mario%';
+SELECT 
+  team1, 
+  team2, 
+  player 
+FROM 
+  game, 
+  goal
+WHERE 
+  game.id=goal.matchid 
+  AND player LIKE 'Mario%'
+;
 ```
 
 OR
 
 ```sql
-SELECT team1, team2, player 
-FROM game JOIN goal
-ON game.id=goal.matchid
-WHERE player LIKE 'Mario%';
+SELECT 
+  team1, 
+  team2, 
+  player 
+FROM 
+  game 
+    JOIN goal
+	ON game.id=goal.matchid
+WHERE 
+  player 
+    LIKE 'Mario%'
+;
 ```
 
 #### Question 5- 
@@ -1059,18 +1281,35 @@ The table eteam gives details of every national team including the coach. You ca
 Show player, teamid, coach, gtime for all goals scored in the first 10 minutes gtime<=10
 
 ```sql
-SELECT player, teamid, coach, gtime
-FROM goal, eteam
-WHERE goal.teamid=eteam.id and gtime<=10;
+SELECT 
+  player,
+  teamid, 
+  coach, 
+  gtime
+FROM 
+  goal, 
+  eteam
+WHERE 
+  goal.teamid=eteam.id 
+  AND gtime<=10
+;
 ```
 
 OR
 
 ```sql
-SELECT player, teamid, coach, gtime
-FROM goal JOIN eteam
-ON goal.teamid=eteam.id 
-WHERE gtime<=10;
+SELECT 
+  player, 
+  teamid, 
+  coach, 
+  gtime
+FROM 
+  goal 
+    JOIN eteam
+	ON goal.teamid=eteam.id 
+WHERE 
+  gtime<=10
+;
 ```
 
 #### Question 6-
@@ -1078,11 +1317,21 @@ WHERE gtime<=10;
 List the dates of the matches and the name of the team in which 'Fernando Santos' was the team1 coach.
 
 ```sql
-SELECT mdate, teamname 
-FROM game JOIN eteam ON (team1=eteam.id)
-WHERE team1 =
-(SELECT eteam.id FROM eteam
-WHERE coach = 'Fernando Santos')
+SELECT 
+  mdate, 
+  teamname 
+FROM 
+  game 
+    JOIN eteam 
+    	ON team1=eteam.id
+WHERE 
+  team1 =(SELECT 
+  		eteam.id 
+	  FROM 
+	  	eteam
+	  WHERE 
+	  	coach = 'Fernando Santos')
+;
 ```
 
 #### Question 7-
@@ -1090,10 +1339,15 @@ WHERE coach = 'Fernando Santos')
 List the player for every goal scored in a game where the stadium was 'National Stadium, Warsaw'
 
 ```sql
-SELECT player
-FROM game JOIN goal
-ON game.id=goal.matchid
-WHERE game.stadium='national stadium, warsaw';
+SELECT 
+  player
+FROM 
+  game 
+    JOIN goal
+	ON game.id=goal.matchid
+WHERE 
+  game.stadium='national stadium, warsaw'
+;
 ```
 
 #### Question 8-
@@ -1102,10 +1356,16 @@ The example query shows all goals scored in the Germany-Greece quarterfinal.
 Instead show the name of all players who scored a goal against Germany.
 
 ```sql
-SELECT distinct(player)
-FROM game JOIN goal
-ON game.id=goal.matchid
-WHERE (team1='ger' or team2='ger') AND teamid !='ger';
+SELECT 
+  DISTINCT(player)
+FROM 
+  game 
+    JOIN goal
+	ON game.id=goal.matchid
+WHERE 
+  (team1='ger' or team2='ger') 
+  AND teamid !='ger'
+;
 ```
 
 #### Question 9-
@@ -1113,10 +1373,17 @@ WHERE (team1='ger' or team2='ger') AND teamid !='ger';
 Show teamname and the total number of goals scored.
 
 ```sql
-SELECT teamname, Count(gtime) AS goals_scored
-FROM goal JOIN eteam 
-ON goal.teamid=eteam.id
-GROUP BY teamname;
+SELECT 
+  teamname,
+  COUNT(gtime)
+    AS goals_scored
+FROM 
+  goal 
+    JOIN eteam 
+	ON goal.teamid=eteam.id
+GROUP BY 
+  teamname
+;
 ```
 
 #### Question 10-
@@ -1124,10 +1391,17 @@ GROUP BY teamname;
 Show the stadium and the number of goals scored in each stadium.
 
 ```sql
-SELECT stadium, count(gtime) AS goals_scored
-FROM game JOIN goal
-ON game.id=goal.matchid
-GROUP BY stadium;
+SELECT 
+  stadium, 
+  COUNT(gtime) 
+    AS goals_scored
+FROM 
+  game 
+    JOIN goal
+	ON game.id=goal.matchid
+GROUP BY 
+  stadium
+;
 ```
 
 #### Question 11-
@@ -1135,11 +1409,21 @@ GROUP BY stadium;
 For every match involving 'POL', show the matchid, date and the number of goals scored.
 
 ```sql
-SELECT matchid, mdate, count(gtime) AS goals_scored
-FROM game JOIN goal
-ON game.id=goal.matchid
-WHERE (team1='pol' OR team2='pol')
-GROUP BY matchid, mdate;
+SELECT
+  matchid, 
+  mdate, 
+  COUNT(gtime) 
+    AS goals_scored
+FROM 
+  game 
+    JOIN goal
+	ON game.id=goal.matchid
+WHERE 
+  (team1='pol' OR team2='pol')
+GROUP BY 
+  matchid, 
+  mdate
+;
 ```
 
 #### Question 12-
@@ -1147,11 +1431,22 @@ GROUP BY matchid, mdate;
 For every match where 'GER' scored, show matchid, match date and the number of goals scored by 'GER'
 
 ```sql
-SELECT matchid, mdate, count(gtime) AS goals_scored
-FROM game JOIN goal
-ON game.id=goal.matchid
-WHERE (team1='ger' or team2='ger') AND teamid='ger'
-GROUP BY matchid, mdate;
+SELECT
+  matchid, 
+  mdate, 
+  COUNT(gtime) 
+    AS goals_scored
+FROM 
+  game 
+    JOIN goal
+	ON game.id=goal.matchid
+WHERE 
+  (team1='ger' or team2='ger') 
+  AND teamid='ger'
+GROUP BY 
+  matchid, 
+  mdate
+;
 ```
 
 #### Question 13-
@@ -1161,15 +1456,28 @@ List every match with the goals scored by each team as shown. This will use "CAS
 Notice in the query given every goal is listed. If it was a team1 goal then a 1 appears in score1, otherwise there is a 0. You could SUM this column to get a count of the goals scored by team1. Sort your result by mdate, matchid, team1 and team2.
 
 ```sql
-SELECT mdate, team1,
-SUM(CASE WHEN teamid=team1 THEN 1 ELSE 0 END) score1,
-team2,
-SUM(CASE WHEN teamid=team2 THEN 1 ELSE 0 END) score2
-FROM game
-LEFT JOIN goal ON 
-game.id = goal.matchid
-GROUP BY mdate, team1, team2
-ORDER BY mdate, matchid, team1, team2;
+SELECT 
+  mdate, 
+  team1,
+  SUM(CASE 
+        WHEN teamid=team1 THEN 1 ELSE 0 END) score1,
+  team2,
+  SUM(CASE 
+  	WHEN teamid=team2 THEN 1 ELSE 0 END) score2
+FROM 
+  game
+    LEFT JOIN goal 
+      ON game.id = goal.matchid
+GROUP BY 
+  mdate, 
+  team1, 
+  team2
+ORDER BY 
+  mdate,
+  matchid, 
+  team1,
+  team2
+;
 ```
 
 ### More JOIN Operations
@@ -1179,9 +1487,14 @@ ORDER BY mdate, matchid, team1, team2;
 List the films where the yr is 1962 (Show id, title)
 
 ```sql
-SELECT id, title
-FROM movie
-WHERE yr=1962;
+SELECT 
+  id, 
+  title
+FROM 
+  movie
+WHERE
+  yr=1962
+;
 ```
 
 #### Quesiton 2- When was Citizen Kane released? 
@@ -1189,9 +1502,13 @@ WHERE yr=1962;
 Give year of 'Citizen Kane'
 
 ```sql
-SELECT yr
-FROM movie 
-WHERE title='Citizen Kane';
+SELECT 
+  yr
+FROM 
+  movie 
+WHERE 
+  title='Citizen Kane'
+;
 ```
 
 #### Question 3- Star Trek movies
@@ -1199,10 +1516,18 @@ WHERE title='Citizen Kane';
 List all of the Star Trek movies, include the id, title and yr (all of these movies include the words Star Trek in the title). Order results by year.
 
 ```sql
-SELECT id, title, yr
-FROM movie
-WHERE title LIKE '%star trek%'
-ORDER by yr;
+SELECT 
+  id, 
+  title, 
+  yr
+FROM 
+  movie
+WHERE 
+  title 
+    LIKE '%star trek%'
+ORDER BY 
+  yr
+;
 ```
 
 #### Question 4- id for actor Glenn close
@@ -1210,9 +1535,13 @@ ORDER by yr;
 What id number does the actor 'Glenn Close' have?
 
 ```sql
-SELECT id
-FROM actor
-WHERE name='glenn close';
+SELECT 
+  id
+FROM
+  actor
+WHERE 
+  name='glenn close'
+;
 ```
 
 #### Question 5-
@@ -1220,9 +1549,13 @@ WHERE name='glenn close';
 What is the id of the film 'Casablanca'
 
 ```sql
-SELECT id
-FROM movie
-WHERE title='casablanca';
+SELECT 
+  id
+FROM 
+  movie
+WHERE 
+  title='casablanca'
+;
 ```
 
 #### Question 6- Cast list of Casablanca
@@ -1230,21 +1563,31 @@ WHERE title='casablanca';
 Obtain the cast list for 'Casablanca'.
 
 ```sql
-SELECT name
-FROM actor JOIN casting
-ON actorid=id
-JOIN movie 
-ON movieid=movie.id
-WHERE title='casablanca';
+SELECT 
+  name
+FROM 
+  actor 
+    JOIN casting
+	ON actorid=id
+    JOIN movie 
+	ON movieid=movie.id
+WHERE 
+  title='casablanca'
+;
 ```
 
 OR
 
 ```sql
-SELECT name
-FROM actor JOIN casting
-ON actorid=id
-WHERE movieid=11768;
+SELECT 
+  name
+FROM 
+  actor 
+    JOIN casting
+	ON actorid=id
+WHERE 
+  movieid=11768
+;
 ```
 
 #### Question 7- Alien Cast List 
@@ -1252,12 +1595,17 @@ WHERE movieid=11768;
 Obtain the cast list for the film 'Alien'
 
 ```sql
-SELECT name
-FROM actor JOIN casting
-ON actorid=id
-JOIN movie 
-ON movieid=movie.id
-WHERE title='alien';
+SELECT 
+  name
+FROM 
+  actor 
+    JOIN casting
+	ON actorid=id
+    JOIN movie 
+	ON movieid=movie.id
+WHERE 
+  title='alien'
+;
 ```
 
 #### Question 8- Harrison Ford movies
@@ -1265,12 +1613,17 @@ WHERE title='alien';
 List the films which 'Harrison Ford' has appeared. 
 
 ```sql
-SELECT title
-FROM movie JOIN casting
-ON movie.id=movieid
-JOIN actor
-ON actor.id=actorid
-WHERE actor.name='Harrison Ford';
+SELECT 
+  title
+FROM 
+  movie 
+    JOIN casting
+	ON movie.id=movieid
+    JOIN actor
+	ON actor.id=actorid
+WHERE 
+  actor.name='Harrison Ford'
+;
 ```
 
 #### Question 9- Harrison Ford as a supporting actor
@@ -1278,13 +1631,18 @@ WHERE actor.name='Harrison Ford';
 List the films where 'Harrison Ford' has appeared - but not in the starring role. (Note: the ord field of casting gives the position of the actor. If ord=1 then this actor is in the starring role)
 
 ```sql
-SELECT title
-FROM movie JOIN casting
-ON movie.id=movieid
-JOIN actor
-ON actor.id=actorid
-WHERE actor.name='Harrison Ford'
-AND casting.ord !=1;
+SELECT 
+  title
+FROM 
+  movie 
+    JOIN casting
+	ON movie.id=movieid
+    JOIN actor
+	ON actor.id=actorid
+WHERE 
+  actor.name='Harrison Ford'
+  AND casting.ord !=1
+;
 ```
 
 #### Question 10- Lead actors in 1962 movies
@@ -1292,12 +1650,21 @@ AND casting.ord !=1;
 List the films together with the leading start for all 1962 films
 
 ```sql
-SELECT title AS movie, name AS leading_actor
-FROM movie JOIN casting
-ON movieid=movie.id
-JOIN actor
-ON actorid=actor.id
-WHERE yr=1962 AND casting.ord =1;
+SELECT 
+  title
+    AS movie, 
+  name 
+    AS leading_actor
+FROM 
+  movie 
+    JOIN casting
+	ON movieid=movie.id
+    JOIN actor
+	ON actorid=actor.id
+WHERE 
+  yr=1962 
+  AND casting.ord =1
+;
 ```
 
 #### Question 11- Busy years for Rock Hudson
@@ -1305,14 +1672,22 @@ WHERE yr=1962 AND casting.ord =1;
 Which were the busiest years for 'Rock Hudson', show the year and the number of movies he made each year for any year in which he made more than 2 movies.
 
 ```sql
-SELECT yr, COUNT(title)
-FROM movie JOIN casting
-ON movie.id=movieid
-JOIN actor
-ON actorid=actor.id
-WHERE name='rock hudson'
-GROUP BY yr
-HAVING count(title)>2; 
+SELECT 
+  yr, 
+  COUNT(title)
+FROM 
+  movie 
+    JOIN casting
+	ON movie.id=movieid
+    JOIN actor
+	ON actorid=actor.id
+WHERE 
+  name='rock hudson'
+GROUP BY 
+  yr
+HAVING 
+  COUNT(title)>2
+; 
 ```
 
 #### Question 12- Lead actor in Julie Andrews movies
@@ -1320,14 +1695,29 @@ HAVING count(title)>2;
 List the film title and the leading actor for all of the films 'Julie Andrews' played in.
 
 ```sql
-SELECT title, name
-FROM movie JOIN casting
-ON movie.id=movieid
-JOIN actor
-ON actorid=actor.id
-WHERE movieid IN
-(SELECT movieid FROM movie JOIN casting ON movie.id=movieid JOIN actor ON actor.id=actorid WHERE name= 'Julie Andrews') 
-AND ord=1;
+SELECT 
+  title, 
+  name
+FROM 
+  movie 
+    JOIN casting
+	ON movie.id=movieid
+    JOIN actor
+	ON actorid=actor.id
+WHERE 
+  movieid 
+    IN(	SELECT
+    	  movieid 
+	FROM 
+	  movie 
+	    JOIN casting 
+	    	ON movie.id=movieid
+	    JOIN actor 
+	    	ON actor.id=actorid
+	WHERE 
+	  name= 'Julie Andrews') 
+  AND ord=1
+;
 ```
 
 #### Queation 13- Actors with 15 leading roles
@@ -1335,15 +1725,24 @@ AND ord=1;
 Obtain a list, in alphabetical order, of actors who've had at least 15 starring roles.
 
 ```sql
-SELECT DISTINCT name FROM actor
-JOIN casting
-ON actorid=actor.id
-WHERE actorid IN(
-	SELECT actorid FROM casting
-	  WHERE ord = 1
-	  GROUP BY actorid
-	 HAVING COUNT(actorid) >= 15)
-ORDER BY name;
+SELECT 
+  DISTINCT name 
+FROM 
+  actor
+    JOIN casting
+	ON actorid=actor.id
+WHERE 
+  actorid IN(SELECT 
+		actorid FROM casting
+	     WHERE 
+	     	ord = 1
+	     GROUP BY 
+	     	actorid
+	     HAVING 
+	     	COUNT(actorid) >= 15)
+ORDER BY 
+  name
+;
 ```
 
 #### Question 14-
@@ -1351,12 +1750,21 @@ ORDER BY name;
 List the films released in the year 1978 ordered by the number of actors in the cast, then by title.
 
 ```sql
-SELECT title, count(actorid)
-FROM movie JOIN casting
-ON movie.id=movieid
-WHERE yr=1978
-GROUP BY title
-ORDER BY COUNT(actorid) desc, title;
+SELECT 
+  title, 
+  COUNT(actorid)
+FROM 
+  movie 
+    JOIN casting
+	ON movie.id=movieid
+WHERE 
+  yr=1978
+GROUP BY 
+  title
+ORDER BY 
+  COUNT(actorid) DESC, 
+  title
+;
 ```
 
 #### Question 15-
@@ -1364,16 +1772,25 @@ ORDER BY COUNT(actorid) desc, title;
 List all the people who have worked with 'Art Garfunkel'.
 
 ```sql
-SELECT name 
-FROM actor JOIN casting
-ON actorid=actor.id
-WHERE name !='art garfunkel'
-AND movieid IN (SELECT movieid
-FROM movie JOIN casting
-ON movieid=movie.id 
-JOIN actor 
-ON actorid=actor.id
-WHERE name ='art garfunkel') ; 
+SELECT 
+  name 
+FROM 
+  actor 
+    JOIN casting
+	ON actorid=actor.id
+WHERE 
+  name !='art garfunkel'
+  AND movieid IN (SELECT 
+  		    movieid
+		  FROM 
+		    movie 
+		      JOIN casting
+			ON movieid=movie.id 
+		      JOIN actor 
+			ON actorid=actor.id
+WHERE 
+  name ='art garfunkel')
+; 
 ```
 
 ### Using NUll
@@ -1385,9 +1802,13 @@ NULL, INNER JOIN, LEFT JOIN, RIGHT JOIN
 Lst the teachers who have NULL for their department
 
 ```sql
-SELECT name 
-FROM teacher 
-WHERE dept IS NULL;
+SELECT 
+  name 
+FROM 
+  teacher 
+WHERE 
+  dept IS NULL
+;
 ```
 
 #### Question 2-
@@ -1395,9 +1816,14 @@ WHERE dept IS NULL;
 Note the INNER JOIN misses the teachers with no department and the departments with no teacher.
 
 ```sql
-SELECT teacher.name, dept.name
- FROM teacher INNER JOIN dept
-           ON (teacher.dept=dept.id);
+SELECT 
+  teacher.name, 
+  dept.name
+FROM 
+  teacher 
+    INNER JOIN dept
+      ON teacher.dept=dept.id
+;
 ````
 
 #### Question 3- 
@@ -1405,10 +1831,14 @@ SELECT teacher.name, dept.name
 Use a different JOIN so that all teachers are listed.
 
 ```sql
-SELECT teacher.name, dept.name
-FROM teacher 
-LEFT JOIN dept 
-ON teacher.dept=dept.id; 
+SELECT 
+  teacher.name, 
+  dept.name
+FROM 
+  teacher 
+     LEFT JOIN dept 
+	ON teacher.dept=dept.id
+; 
 ```
 
 #### Question 4-
@@ -1416,9 +1846,14 @@ ON teacher.dept=dept.id;
 Use a different JOIN so that all departments are listed.
 
 ```sql
-SELECT teacher.name, dept.name
-FROM teacher RIGHT JOIN dept
-ON (teacher.dept=dept.id);
+SELECT 
+  teacher.name, 
+  dept.name
+FROM 
+  teacher 
+    RIGHT JOIN dept
+	ON teacher.dept=dept.id
+;
 ```
 
 #### Question 5- Using the COALESCE function
@@ -1426,15 +1861,25 @@ ON (teacher.dept=dept.id);
 Use COALESCE to print the mobile number. Use the number '07986 444 2266' if there is no number given. Show teacher name and mobile number or '07986 444 2266'
 
 ```sql
-SELECT name, COALESCE(mobile,'07986 444 2266') AS mobile
-FROM teacher; 
+SELECT 
+  name, 
+  COALESCE(mobile,'07986 444 2266') 
+    AS mobile
+FROM 
+  teacher
+; 
 ```
 
 OR
 
 ```sql
-SELECT name, IFNULL(mobile,'07986 444 2266') AS mobile
-FROM teacher; 
+SELECT 
+  name, 
+  IFNULL(mobile,'07986 444 2266') 
+    AS mobile
+FROM 
+  teacher
+; 
 ```
 
 #### Question 6- 
@@ -1442,17 +1887,31 @@ FROM teacher;
 Use the COALESCE function and a LEFT JOIN to print the teacher name and department name. Use the string 'None' where there is no department.
 
 ```sql
-SELECT teacher.name AS teacher, COALESCE(dept.name, 'None') AS department
-FROM teacher LEFT JOIN dept 
-ON teacher.dept=dept.id;
+SELECT 
+  teacher.name 
+    AS teacher, 
+  COALESCE(dept.name, 'None') 
+    AS department
+FROM 
+  teacher 
+    LEFT JOIN dept 
+	ON teacher.dept=dept.id
+;
 ```
 
 OR
 
 ```sql
-SELECT teacher.name AS teacher, IFNULL(dept.name, 'None') AS department
-FROM teacher LEFT JOIN dept 
-ON teacher.dept=dept.id;
+SELECT 
+  teacher.name 
+    AS teacher,
+  IFNULL(dept.name, 'None') 
+    AS department
+FROM 
+  teacher 
+    LEFT JOIN dept 
+	ON teacher.dept=dept.id
+;
 ```
 
 #### Question 7-
@@ -1460,8 +1919,12 @@ ON teacher.dept=dept.id;
 Use COUNT to show the number of teachers and the number of mobile phones.
 
 ```sql
-SELECT COUNT(name), COUNT(mobile)
-FROM teacher;
+SELECT 
+  COUNT(name),
+  COUNT(mobile)
+FROM 
+  teacher
+;
 ```
 
 #### Question 8-
@@ -1469,10 +1932,16 @@ FROM teacher;
 Use COUNT and GROUP BY dept.name to show each department and the number of staff. Use a RIGHT JOIN to ensure that the Engineering department is listed.
 
 ```sql
-SELECT dept.name, COUNT(teacher.name)
-FROM teacher RIGHT JOIN dept
-ON teacher.dept=dept.id
-GROUP BY dept.name;
+SELECT 
+  dept.name,
+  COUNT(teacher.name)
+FROM 
+  teacher 
+    RIGHT JOIN dept
+	ON teacher.dept=dept.id
+GROUP BY
+  dept.name
+;
 ```
 
 #### Question 9-
@@ -1480,10 +1949,15 @@ GROUP BY dept.name;
 Use CASE to show the name of each teacher followed by 'Sci' if the teacher is in dept 1 or 2 and 'Art' otherwise.
 
 ```sql
-SELECT name, CASE WHEN dept<=2 THEN 'Sci'
-ELSE 'Art'
-END
-FROM teacher;
+SELECT 
+  name, 
+  CASE 
+    WHEN dept<=2 THEN 'Sci'
+    ELSE 'Art'
+    END
+FROM 
+  teacher
+;
 ```
 
 #### Question 10-
@@ -1491,11 +1965,16 @@ FROM teacher;
 Use CASE to show the name of each teacher followed by 'Sci' if the teacher is in dept 1 or 2, show 'Art' if the teacher's dept is 3 and 'None' otherwise.
 
 ```sql
-SELECT name, CASE WHEN dept<=2 THEN 'Sci'
-WHEN dept =3 THEN 'Art'
-ELSE 'None'
-END
-FROM teacher;
+SELECT 
+  name, 
+  CASE 
+    WHEN dept<=2 THEN 'Sci'
+    WHEN dept =3 THEN 'Art'
+    ELSE 'None'
+    END
+FROM 
+  teacher
+;
 ```
 
 ### SELF JOIN
@@ -1505,8 +1984,11 @@ FROM teacher;
 How many stops are in the database.
 
 ```sql
-SELECT COUNT(id)
-FROM stops;
+SELECT 
+  COUNT(id)
+FROM 
+  stops
+;
 ```
 
 ### Question 2- 
@@ -1514,9 +1996,13 @@ FROM stops;
 Find the id value for the stop 'Craiglockhart'
 
 ```sql
-SELECT id
-FROm stops
-WHERE name ='craiglockhart';
+SELECT 
+  id
+FROM
+  stops
+WHERE 
+  name ='craiglockhart'
+;
 ```
 
 #### Question 3-
@@ -1525,12 +2011,19 @@ Give the id and the name for the stops on the '4' 'LRT' service.
 *Note- There is a bug on this problem.  The answer key when you enter the same exact query as the cheat code gives you some of the data is incorrect prompt.  The only way to get it correctly that I found is if you copy and paste from the cheat code or if you ORDER BY pos. The question didn't ask to order by pos.  This is a bad question.  Prove me wrong. 
 
 ```sql
-SELECT id, name
-FROM stops, route
-WHERE id=stop
-AND company='LRT'
-AND num=4
-ORDER BY pos;
+SELECT 
+  id, 
+  name
+FROM 
+  stops, 
+  route
+WHERE 
+  id=stop
+  AND company='LRT'
+  AND num=4
+ORDER BY 
+  pos
+;
 ```
 
 #### Question 4- Routes and stops
@@ -1538,13 +2031,24 @@ ORDER BY pos;
 The query shown gives the number of routes that visit either London Road (149) or Craiglockhart (53). Run the query and notice the two services that link these stops have a count of 2. Add a HAVING clause to restrict the output to these two routes.
 
 ```sql
-SELECT company, num, COUNT(*)
-FROM route WHERE stop=149 OR stop=53
-GROUP BY company, num
-HAVING COUNT(*)=2;
+SELECT 
+  company, 
+  num, 
+  COUNT(*)
+FROM 
+  route 
+WHERE 
+  stop=149 
+  OR stop=53
+GROUP BY 
+  company, 
+  num
+HAVING 
+  COUNT(*)=2
+;
 ```
 
-#### Question 5- 
+<!--#### Question 5- 
 
 Execute the self join shown and observe that b.stop gives all the places you can get to from Craiglockhart, without changing routes. Change the query so that it shows the services from Craiglockhart to London Road.
 
@@ -1556,5 +2060,6 @@ WHERE a.stop=53 and b.stop IN(SELECT stop FROM route JOIN stops ON route.stop=st
 #### Question 6- 
 
 The query shown is similar to the previous one, however by joining two copies of the stops table we can refer to stops by name rather than by number. Change the query so that the services between 'Craiglockhart' and 'London Road' are shown. If you are tired of these places try 'Fairmilehead' against 'Tollcross'
+-->
 
 
