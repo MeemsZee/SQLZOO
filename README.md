@@ -2000,7 +2000,7 @@ WHERE
 #### Question 3-
 
 Give the id and the name for the stops on the '4' 'LRT' service.
-*Note- There is a bug on this problem.  The answer key when you enter the same exact query as the cheat code gives you some of the data is incorrect prompt.  The only way to get it correctly that I found is if you copy and paste from the cheat code or if you ORDER BY pos. The question didn't ask to order by pos.  This is a bad question.  Prove me wrong. 
+*Note- The data model is flawed.  By naming one of the columns num and not actually be integers is misleading.  
 
 ```sql
 SELECT 
