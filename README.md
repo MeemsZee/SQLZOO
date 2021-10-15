@@ -571,13 +571,12 @@ FROM
   world
 WHERE 
   continent='europe'
-  AND GDP/population>
-    (SELECT 
-       gdp/population
-     FROM 
-       world
-     WHERE 
-       name= 'united kingdom')
+  AND GDP/population> (SELECT 
+       			 gdp/population
+     		       FROM 
+       			 world
+     		       WHERE 
+       			 name= 'united kingdom')
 ;
 ```
 
@@ -591,20 +590,18 @@ SELECT
 FROM 
   world
 WHERE 
-  continent= 
-    (SELECT 
-       continent 
-     FROM 
-       world
-     WHERE 
-       name='Australia')
-  OR continent= 
-    (SELECT 
-      continent
-     FROM 
-       world
-     WHERE 
-       name= 'Argentina')
+  continent= (SELECT 
+       		continent 
+     	      FROM 
+       		world
+              WHERE 
+       		name='Australia')
+  OR continent= (SELECT 
+      		   continent
+     		 FROM 
+       		   world
+     		 WHERE 
+       		   name= 'Argentina')
 ORDER BY 
   name ASC
 ;
@@ -621,20 +618,18 @@ SELECT
 FROM 
   world
 WHERE 
-  population> 
-    (SELECT 
-      population 
-     FROM 
-       world
-     WHERE 
-       name='Canada')
-  AND population<
-    (SELECT 
-       population 
-     FROM 
-       world
-     WHERE 
-       name ='poland')
+  population> (SELECT 
+      		 population 
+     	       FROM 
+      		 world
+     	       WHERE 
+       		 name='Canada')
+  AND population<(SELECT 
+       		    population 
+     		  FROM 
+      		    world
+     		  WHERE 
+      		    name ='poland')
 ;
 ```
 
@@ -669,11 +664,13 @@ SELECT
 FROM 
   world
 WHERE 
-  gdp>
-    ALL(SELECT gdp 
-    	FROM world
-	WHERE continent='europe'
-	AND gdp>0)
+  gdp> ALL(SELECT 
+  		gdp 
+    	   FROM 
+	   	world
+	   WHERE 
+	   	continent='europe'
+		AND gdp>0)
 ; 
 ```
 OR
@@ -684,13 +681,12 @@ SELECT
 FROM
   world
 WHERE 
-  gdp>
-     (SELECT 
-        MAX(gdp) 
-      FROM 
-        world
-      WHERE 
-        continent='europe')
+  gdp>(SELECT 
+         MAX(gdp) 
+       FROM 
+         world
+       WHERE 
+         continent='europe')
 ;
 ```
 
@@ -706,14 +702,13 @@ SELECT
 FROM 
   world a
 WHERE 
-  area >= ALL
-	(SELECT 
-	  area 
-	 FROM 
-	   world b
-	 WHERE 
-	   a.continent=b.continent
-	   AND area>0)
+  area >= ALL(SELECT 
+	  	area 
+	      FROM 
+	   	world b
+	      WHERE 
+	   	a.continent=b.continent
+	    	AND area>0)
 ;
 ```
 
@@ -727,8 +722,7 @@ SELECT
 FROM 
   world a
 WHERE 
-  area =
-	(SELECT 
+  area =(SELECT 
 	   Max(area) 
 	 FROM 
 	   world b
@@ -747,13 +741,12 @@ SELECT
 FROM 
   world a
 WHERE 
-  name=
-     (SELECT 
-        MIN(name) 
-      FROM
-        world b 
-      WHERE 
-        a.continent=b.continent)
+  name=(SELECT 
+          MIN(name) 
+      	FROM
+          world b 
+      	WHERE 
+          a.continent=b.continent)
 ;
 ```
 
@@ -765,13 +758,12 @@ SELECT
 FROM 
   world a
 WHERE 
-  name<= ALL
-	(SELECT 
-	   name 
-	 FROM 
-	   world b 
-	 WHERE 
-	   a.continent=b.continent)
+  name<= ALL(SELECT 
+	   	name 
+	     FROM 
+	   	world b 
+	     WHERE 
+	 	a.continent=b.continent)
 ;
 ```
 
