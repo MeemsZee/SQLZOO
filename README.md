@@ -101,7 +101,7 @@ Show the name and population in millions for the countries of the continent 'Sou
 ```sql
 SELECT 
   name, 
-  population/1000000 as pop_per_million
+  population/1000000 AS pop_per_million
 FROM 
   world
 WHERE 
@@ -149,7 +149,7 @@ FROM
   world
 WHERE 
   area> 3000000 
-    OR population>250000000;
+  OR population>250000000;
 ```
 
 #### Question 8- One or the other (but not both)
@@ -157,26 +157,43 @@ WHERE
 Show the countries that are big by area (more than 3 mil) or by population (more than 250 mil) but not both.  Show name, population and area. 
 
 ```sql
-SELECT name, population, area 
-FROM world 
-WHERE area > 3000000 XOR population > 250000000;
+SELECT 
+  name, 
+  population, 
+  area 
+FROM 
+  world 
+WHERE 
+  area > 3000000 
+  XOR population > 250000000;
 ```
 
 OR
 
 ```sql
-SELECT name, population, area 
-FROM world 
-WHERE (area > 3000000 AND population <250000000) OR (population > 250000000 and area <3000000);
+SELECT 
+  name, 
+  population, 
+  area 
+FROM 
+  world 
+WHERE 
+  (area > 3000000 AND population <250000000) 
+  OR (population > 250000000 AND area <3000000);
 ```
 
 #### Question 9- Rounding
 Show the name and population in millions and the GDP in billions for the countires of the continent 'South America' to the nearnest hundredth. 
 
 ```sql
-SELECT name, ROUND(population/1000000,2) AS pop_in_millions, ROUND(GDP/1000000000,2) AS GDP_in_billions 
-FROM world 
-WHERE continent = 'South America'; 
+SELECT 
+  name, 
+  ROUND(population/1000000,2) AS pop_in_millions,
+  ROUND(GDP/1000000000,2) AS GDP_in_billions 
+FROM 
+  world 
+WHERE 
+  continent = 'South America'; 
 ```
 
 #### Question 10- Trillion dollar economies 
@@ -184,9 +201,13 @@ WHERE continent = 'South America';
 Show the name and per capita GDP for countries with a GDP of minimum 1 tillion rounded to nearest thousand. 
 
 ```sql
-SELECT name, ROUND(GDP/population,-3)
-FROM world
-WHERE gdp > 1000000000000;
+SELECT 
+  name, 
+  ROUND(GDP/population,-3)
+FROM 
+  world
+WHERE 
+  gdp > 1000000000000;
 ```
 
 #### Question 11- Name and capital have the same length
@@ -194,9 +215,13 @@ WHERE gdp > 1000000000000;
 Show the name and capital where the name and the capital have the same number of characters. 
 
 ```sql
-SELECT name, capital 
-FROM world 
-WHERE LENGTH(name)= LENGTH(capital);
+SELECT 
+  name, 
+  capital 
+FROM 
+  world 
+WHERE 
+  LENGTH(name)= LENGTH(capital);
 ```
 
 #### Question 12- Matching name and capital
@@ -204,9 +229,14 @@ WHERE LENGTH(name)= LENGTH(capital);
 Show the name and capital where the first letters of each match. Don't include countries where the name and the capital are the same word
 
 ```sql
-SELECT name, capital 
-FROM world 
-WHERE LEFT(name,1)= LEFT(capital,1) and name <> capital;
+SELECT 
+  name, 
+  capital 
+FROM 
+  world 
+WHERE 
+  LEFT(name,1)= LEFT(capital,1) 
+  AND name <> capital;
 ```
 
 #### Question 13- All the vowels
@@ -214,14 +244,17 @@ WHERE LEFT(name,1)= LEFT(capital,1) and name <> capital;
 Find the country that has all the vowels and no spaces in its name.
 
 ```sql
-SELECT name
-FROM world
-WHERE name LIKE '%a%' 
-AND name LIKE '%e%' 
-AND name LIKE '%i%'
-AND name LIKE '%o%' 
-AND name LIKE '%u%' 
-AND name NOT LIKE '% %';
+SELECT 
+  name
+FROM 
+  world
+WHERE 
+  name LIKE '%a%' 
+  AND name LIKE '%e%' 
+  AND name LIKE '%i%'
+  AND name LIKE '%o%' 
+  AND name LIKE '%u%' 
+  AND name NOT LIKE '% %';
 ```
 
 ### SELECT from Nobel 
@@ -231,9 +264,14 @@ AND name NOT LIKE '% %';
 Change existing query to display Nobel prices for 1950
 
 ```sql
-SELECT yr, subject, winner
-FROM nobel
-WHERE yr = 1950;
+SELECT 
+  yr, 
+  subject, 
+  winner
+FROM 
+  nobel
+WHERE 
+  yr = 1950;
 ```
 
 #### Question 2- 1962 Literature
@@ -241,10 +279,13 @@ WHERE yr = 1950;
 Show who won the 1962 prize for Literature
 
 ```sql
-SELECT winner
-FROM nobel 
-WHERE yr = 1962
-AND subject = 'literature';
+SELECT 
+  winner
+FROM 
+  nobel 
+WHERE 
+  yr = 1962
+  AND subject = 'literature';
 ```
 
 #### Question 3- Albert Einstein
@@ -252,9 +293,13 @@ AND subject = 'literature';
 Show the year and subject that won 'Albert Einstein' his prize
 
 ```sql
-SELECT yr, subject
-FROM nobel 
-WHERE winner= 'albert einstein';
+SELECT 
+  yr, 
+  subject
+FROM 
+  nobel 
+WHERE 
+  winner= 'albert einstein';
 ```
 
 #### Question 4- Recent Peace Prizes
@@ -262,9 +307,13 @@ WHERE winner= 'albert einstein';
 Give the name of the 'Peace' winners since the year 2000, including 2000
 
 ```sql
-SELECT winner
-FROM nobel
-WHERE yr >= 2000 and subject ='peace';
+SELECT 
+  winner
+FROM 
+  nobel
+WHERE 
+  yr >= 2000 
+  AND subject ='peace';
 ```
 
 #### Question 5- Literature in the 1980s
@@ -272,18 +321,28 @@ WHERE yr >= 2000 and subject ='peace';
 Show all details (yr, subject, winner) of the Literature prize winners for 1980 to 1989 inclusive. 
 
 ```sql
-SELECT *
-FROM nobel
-WHERE subject= 'literature'
-and yr>=1980 and yr <=1989;
+SELECT 
+  *
+FROM 
+  nobel
+WHERE 
+  subject= 'literature'
+  AND yr>=1980 
+  AND yr <=1989;
 ```
 OR
 
 ```sql
-SELECT yr, subject, winner
-FROM nobel
-WHERE subject= 'literature'
-and yr>=1980 and yr <=1989;
+SELECT 
+  yr, 
+  subject, 
+  winner
+FROM 
+  nobel
+WHERE 
+  subject= 'literature'
+  AND yr>=1980 
+  AND yr <=1989;
 ```
 
 #### Question 6- Only Presidents
@@ -291,9 +350,13 @@ and yr>=1980 and yr <=1989;
 Show all details of the presidental winners: Theodore Roosevelt, Woodrow Wilson, Jimmy Carter, Barack Obama
 
 ```sql
-SELECT * 
-FROM nobel 
-WHERE winner IN ('theodore roosevelt', 'woodrow wilson', 'jimmy carter', 'barack obama'); 
+SELECT 
+  * 
+FROM 
+  nobel 
+WHERE 
+  winner 
+    IN ('theodore roosevelt', 'woodrow wilson', 'jimmy carter', 'barack obama'); 
 ```
 
 #### Question 7- John 
@@ -301,9 +364,13 @@ WHERE winner IN ('theodore roosevelt', 'woodrow wilson', 'jimmy carter', 'barack
 Show the winners with the first name John
 
 ```sql
-SELECT winner
-FROM nobel
-WHERE winner LIKE 'John%';
+SELECT 
+  winner
+FROM 
+  nobel
+WHERE 
+  winner 
+    LIKE 'John%';
 ```
 
 #### Question 8- Chemistry and Physics from different years
@@ -311,10 +378,17 @@ WHERE winner LIKE 'John%';
 Show the year, subject, and name of physics winners for 1980 together with the chemistry winners for 1984
 
 ```sql
-SELECT yr, subject, winner
-FROM nobel 
-WHERE subject='physics' AND yr =1980
-OR (subject='chemistry' AND yr = 1984);
+SELECT 
+  yr, 
+  subject, 
+  winner
+FROM 
+  nobel 
+WHERE 
+  subject='physics' 
+  AND yr =1980
+  OR (subject='chemistry' 
+    AND yr = 1984);
 ```
 
 #### Question 9- Exclude Chemists and Medics
@@ -322,10 +396,16 @@ OR (subject='chemistry' AND yr = 1984);
 Show the year, subject, and name of winners for 1980 excluding Chemistry and Medicine
 
 ```sql
-SELECT yr, subject, winner
-FROM nobel 
-WHERE yr = 1980 
-AND subject NOT IN ('Chemistry', 'Medicine');
+SELECT 
+  yr, 
+  subject, 
+  winner
+FROM 
+  nobel 
+WHERE 
+  yr = 1980 
+  AND subject 
+    NOT IN ('Chemistry', 'Medicine');
 ```
 
 #### Question 10- Early Medicine, Late Literature
@@ -333,19 +413,27 @@ AND subject NOT IN ('Chemistry', 'Medicine');
 Show year, subject, and name of people who won a 'Medicine' prize in an early year (before 1910, not including 1910) together with winners of a 'Literature' prize in a later (after 2004, including 2004)
 
 ```sql
-SELECT yr, subject, winner
-FROM nobel
-WHERE (subject ='medicine' and yr<1910)
-OR (subject='literature' and yr >=2004);
+SELECT 
+  yr, 
+  subject, 
+  winner
+FROM 
+  nobel
+WHERE 
+  (subject ='medicine' and yr<1910)
+  OR (subject='literature' and yr >=2004);
 ```
 #### Question 11- Umlaut
 
 Find all details of the prize won by Peter Grünberg. Hint: for macs hold press on u until options pop up and select the number corresponding to the letter desired
 
 ```sql
-SELECT *
-FROM nobel 
-WHERE winner='peter grünberg';
+SELECT 
+  *
+FROM 
+  nobel 
+WHERE 
+  winner='peter grünberg';
 ```
 
 #### Question 12- Apostrophe
@@ -353,9 +441,12 @@ WHERE winner='peter grünberg';
 Find all details of the prize won by Eugene O'Neill. Hint: to tell sql you want to keep the single quote, add another one directly after ('')
 
 ```sql
-SELECT *
-FROM nobel
-WHERE winner= 'eugene o''neill';
+SELECT 
+  *
+FROM 
+  nobel
+WHERE 
+  winner= 'eugene o''neill';
 ```
 
 #### Question 13- Knights of the realm
@@ -363,10 +454,18 @@ WHERE winner= 'eugene o''neill';
 List the winners, year, and subject where the winner starts with Sir.  Show the most recent first, then by name order. 
 
 ```sql
-SELECT winner, yr, subject
-FROM nobel
-WHERE winner LIKE 'SIR%'
-ORDER BY yr DESC, winner;
+SELECT 
+  winner, 
+  yr, 
+  subject
+FROM 
+  nobel
+WHERE 
+  winner 
+    LIKE 'SIR%'
+ORDER BY 
+  yr DESC, 
+  winner;
 ```
 
 #### Question 14- Chemistry and Physics last
@@ -374,21 +473,35 @@ ORDER BY yr DESC, winner;
 Show the 1984 winners and subject ordered by subject and winner name; bust list Chesmitry and Physics last. 
 
 ```sql
-SELECT winner, subject
-  FROM nobel
- WHERE yr=1984
- ORDER BY subject IN ('physics','chemistry'), subject, winner;
- ```
+SELECT 
+  winner, 
+  subject
+FROM 
+  nobel
+WHERE 
+  yr=1984
+ORDER BY 
+  subject 
+    IN ('physics','chemistry'), subject, winner;
+```
  
  OR
  
- ```sql
- SELECT winner, subject
-  FROM nobel
- WHERE yr=1984
- ORDER BY 
-CASE WHEN subject IN ('physics','chemistry')THEN 1 ELSE 0 END,
-subject, winner;
+```sql
+SELECT 
+  winner, 
+  subject
+FROM 
+  nobel
+WHERE 
+  yr=1984
+ORDER BY 
+  CASE WHEN subject 
+   IN ('physics','chemistry')
+      THEN 1 ELSE 0 
+      END,
+  subject,
+  winner;
 ```
 
 
@@ -399,12 +512,18 @@ subject, winner;
 List each country name where the population is larger than that of 'Russia'. 
 
 ```sql
-SELECT name
-FROM world
-WHERE population> 
-(SELECT population 
-From world
-WHERE name='Russia');
+SELECT 
+  name
+FROM 
+  world
+WHERE 
+  population> 
+    (SELECT 
+       population 
+     From 
+       world
+     WHERE 
+       name='Russia');
 ```
 
 #### Question 2- Richer than UK
@@ -412,29 +531,45 @@ WHERE name='Russia');
 Show the countries in Europe with a per capita GDP greater than 'United Kingdom'
 
 ```sql
-SELECT name
-FROM world
-WHERE continent='europe'
-AND GDP/population>
-(SELECT gdp/population
-FROM world
-WHERE name= 'united kingdom');
+SELECT 
+  name
+FROM 
+  world
+WHERE 
+  continent='europe'
+  AND GDP/population>
+    (SELECT 
+       gdp/population
+     FROM 
+       world
+     WHERE 
+       name= 'united kingdom');
 ```
 
 #### Question 3- Neighbours of Argentina and Australia
 List the name and continent of countries in the continent containing either Argentina or Australia.  Order by name of the country
 
 ```sql
-SELECT name, continent
-FROM world
-WHERE continent= 
-(SELECT continent 
-FROM world
-WHERE name='Australia')
-OR continent= 
-(SELECT continent
-FROM world
-WHERE name= 'Argentina')
+SELECT 
+  name, 
+  continent
+FROM 
+  world
+WHERE 
+  continent= 
+    (SELECT 
+       continent 
+     FROM 
+       world
+     WHERE 
+       name='Australia')
+  OR continent= 
+    (SELECT 
+      continent
+     FROM 
+       world
+     WHERE 
+       name= 'Argentina')
 ORDER BY name ASC;
 ```
 
@@ -443,16 +578,26 @@ ORDER BY name ASC;
 Which country has a population that is more than Cananda but less than Poland? Show name and population
 
 ```sql
-SELECT name, population 
-FROM world
-WHERE population> 
-(SELECT population 
-FROM world
-WHERE name='Canada')
-AND population<
-(SELECT population 
-FROM world
-WHERE name ='poland');
+SELECT 
+  name, 
+    population 
+FROM 
+  world
+WHERE 
+  population> 
+    (SELECT 
+      population 
+     FROM 
+       world
+     WHERE 
+       name='Canada')
+  AND population<
+    (SELECT 
+       population 
+     FROM 
+       world
+     WHERE 
+       name ='poland');
 ```
 
 #### Question 5- Percentages of Germany
@@ -460,32 +605,52 @@ WHERE name ='poland');
 Show the name and population of each country in Europe.  Show the population as a percentage of the population of Germany. 
 
 ```sql
-SELECT name, CONCAT(ROUND(population/(SELECT population From world WHERE name='Germany')*100,0),'%')
-FROM world
-WHERE continent='europe';
+SELECT 
+  name, 
+  CONCAT
+    (ROUND(population/(SELECT 
+                         population 
+		       From 
+		         world 
+		       WHERE 
+		         name='Germany')
+           *100,0),'%')
+FROM 
+  world
+WHERE 
+  continent='europe';
 ```
 #### Question 6- Bigger than every country in Europe
 
 Which countries have a GDP greater than every country in Europe? Give the name only.  Hint: For the first query, the condition gdp>0 is imperative in the subquery.  Some countries have null for gdp.
 
 ```sql
-SELECT name 
-FROM world
-WHERE gdp>
-ALL(SELECT gdp 
-FROM world
-WHERE continent='europe'
-and gdp>0); 
+SELECT 
+  name 
+FROM 
+  world
+WHERE 
+  gdp>
+    ALL(SELECT gdp 
+    	FROM world
+	WHERE continent='europe'
+	AND gdp>0); 
 ```
 OR
 
 ```sql
-SELECT name 
-FROM world
-WHERE gdp>
-(SELECT MAX(gdp) 
-FROM world
-WHERE continent='europe');
+SELECT 
+  name 
+FROM
+  world
+WHERE 
+  gdp>
+     (SELECT 
+        MAX(gdp) 
+      FROM 
+        world
+      WHERE 
+        continent='europe');
 ```
 
 #### Question 7- Largest in each continent
@@ -493,39 +658,76 @@ WHERE continent='europe');
 Find the largest country(by area) in each continent, show the continent, the name and the area. 
 
 ```sql
-
-SELECT continent, name, area FROM world a
-WHERE area >= ALL
-(SELECT area FROM world b
-WHERE a.continent=b.continent
-AND area>0);
+SELECT 
+  continent, 
+  name, 
+  area 
+FROM 
+  world a
+WHERE 
+  area >= ALL
+	(SELECT 
+	  area 
+	 FROM 
+	   world b
+	 WHERE 
+	   a.continent=b.continent
+	   AND area>0);
 ```
 
 OR 
 
 ```sql
-SELECT continent, name, area FROM world a
-WHERE area =
-(SELECT Max(area) FROM world b
-WHERE a.continent=b.continent
-AND area>0)
+SELECT 
+  continent, 
+  name, 
+  area 
+FROM 
+  world a
+WHERE 
+  area =
+	(SELECT 
+	   Max(area) 
+	 FROM 
+	   world b
+	 WHERE 
+	   a.continent=b.continent
+	   AND area>0)
 ```
 
 #### Question 8- First country of each continent
 
 ```sql
-SELECT continent, name 
-FROM world a
-WHERE name=
-(SELECT MIN(name) FROM world b WHERE a.continent=b.continent)
+SELECT 
+  continent, 
+  name 
+FROM 
+  world a
+WHERE 
+  name=
+     (SELECT 
+        MIN(name) 
+      FROM
+        world b 
+      WHERE 
+        a.continent=b.continent)
 ```
 
 OR 
 ```sql
-SELECT continent, name 
-FROM world a
-WHERE name<= ALL
-(SELECT name FROM world b WHERE a.continent=b.continent)
+SELECT 
+  continent, 
+  name 
+FROM 
+  world a
+WHERE 
+  name<= ALL
+	(SELECT 
+	   name 
+	 FROM 
+	   world b 
+	 WHERE 
+	   a.continent=b.continent)
 ```
 
 #### Question 9- Difficult Questions that Utilize Techniques Not Covered In Prior Sections
