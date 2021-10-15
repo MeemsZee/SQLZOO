@@ -913,8 +913,8 @@ List the continents that have a total population of at least 100 million
 ```sql
 SELECT 
   continent
-FROM w
-  orld 
+FROM 
+  world 
 GROUP BY 
   continent
 HAVING 
