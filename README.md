@@ -1256,4 +1256,54 @@ END
 FROM teacher;
 ```
 
+### SELF JOIN
+
+#### Question 1- 
+
+How many stops are in the database.
+
+```sql
+SELECT COUNT(id)
+FROM stops;
+```
+
+### Question 2- 
+
+Find the id value for the stop 'Craiglockhart'
+
+```sql
+SELECT id
+FROm stops
+WHERE name ='craiglockhart';
+```
+
+#### Question 3-
+
+Give the id and the name for the stops on the '4' 'LRT' service.
+*Note- There is a bug on this problem.  The answer key when you enter the same exact query as the cheat code gives you some of the data is incorrect prompt.  The only way to get it correctly that I found is if you copy and paste from the cheat code or if you ORDER BY pos. The question didn't ask to order by pos.  This is a bad question.  Prove me wrong. 
+
+```sql
+SELECT id, name
+FROM stops, route
+WHERE id=stop
+AND company='LRT'
+AND num=4
+ORDER BY pos;
+```
+
+#### Question 4- Routes and stops
+
+The query shown gives the number of routes that visit either London Road (149) or Craiglockhart (53). Run the query and notice the two services that link these stops have a count of 2. Add a HAVING clause to restrict the output to these two routes.
+
+```sql
+SELECT company, num, COUNT(*)
+FROM route WHERE stop=149 OR stop=53
+GROUP BY company, num
+HAVING COUNT(*)=2;
+```
+
+#### Question 5- 
+
+Execute the self join shown and observe that b.stop gives all the places you can get to from Craiglockhart, without changing routes. Change the query so that it shows the services from Craiglockhart to London Road.
+
 
